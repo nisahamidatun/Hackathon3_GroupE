@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidlinehorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelinevertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/Title_Style"
+        android:text="@string/hai_binarian"
+        app:layout_constraintStart_toStartOf="@id/guidelinevertical"
+        app:layout_constraintTop_toTopOf="@id/guidlinehorizontal" />
+
+    <TextView
+        android:id="@+id/title_item"
+        style="@style/Title_item"
+        android:text="@string/mau_makan_apa_hari_ini"
+        app:layout_constraintBottom_toBottomOf="@id/guidelinevertical"
+        app:layout_constraintStart_toStartOf="@id/guidelinevertical"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+    <ImageView
+        android:id="@+id/cart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/cart"
+        app:layout_constraintEnd_toStartOf="@id/account"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintWidth_percent="0.12"
+        app:layout_constraintTop_toTopOf="@id/guidlinehorizontal"
+         android:contentDescription="@string/cart"/>
+
+    <ImageView
+        android:id="@+id/account"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintTop_toTopOf="@id/guidlinehorizontal"
+        app:layout_constraintWidth_percent="0.12" />
+
+    <ImageView
+        android:id="@+id/diskonfood"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/diskonfood"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidelinevertical"
+        app:layout_constraintTop_toBottomOf="@id/title_item" />
+
+    <ImageView
+        android:id="@+id/iv_nasi"
+        style="@style/image_style"
+        android:src="@drawable/nasi"
+        app:layout_constraintEnd_toStartOf="@+id/iv_mie"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/diskonfood" />
+
+    <TextView
+        android:id="@+id/tv_nasi"
+        style="@style/Title_item"
+        android:text="@string/nasi"
+        app:layout_constraintEnd_toEndOf="@id/iv_nasi"
+        app:layout_constraintStart_toStartOf="@id/iv_nasi"
+        app:layout_constraintTop_toBottomOf="@id/iv_nasi" />
+
+    <ImageView
+        android:id="@+id/iv_mie"
+        style="@style/image_style"
+        android:src="@drawable/mie"
+        app:layout_constraintEnd_toStartOf="@+id/iv_snack"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/iv_nasi"
+        app:layout_constraintTop_toBottomOf="@id/diskonfood" />
+
+    <TextView
+        android:id="@+id/tv_mie"
+        style="@style/Title_item"
+        android:text="@string/mie"
+        app:layout_constraintEnd_toEndOf="@id/iv_mie"
+        app:layout_constraintStart_toStartOf="@id/iv_mie"
+        app:layout_constraintTop_toBottomOf="@id/iv_mie" />
+
+    <ImageView
+        android:id="@+id/iv_snack"
+        style="@style/image_style"
+        android:src="@drawable/snack"
+        app:layout_constraintEnd_toStartOf="@+id/iv_minuman"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/iv_mie"
+        app:layout_constraintTop_toBottomOf="@id/diskonfood" />
+
+    <TextView
+        android:id="@+id/tv_snack"
+        style="@style/Title_item"
+        android:text="@string/snack"
+        app:layout_constraintEnd_toEndOf="@id/iv_snack"
+        app:layout_constraintStart_toStartOf="@id/iv_snack"
+        app:layout_constraintTop_toBottomOf="@id/iv_snack" />
+
+    <ImageView
+        android:id="@+id/iv_minuman"
+        style="@style/image_style"
+        android:src="@drawable/minuman"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/iv_snack"
+        app:layout_constraintTop_toBottomOf="@id/diskonfood" />
+
+    <TextView
+        android:id="@+id/tv_minuman"
+        style="@style/Title_item"
+        android:text="@string/minuman"
+        app:layout_constraintEnd_toEndOf="@id/iv_minuman"
+        app:layout_constraintStart_toStartOf="@id/iv_minuman"
+        app:layout_constraintTop_toBottomOf="@id/iv_minuman" />
+    <TextView
+        style="@style/Title_Style"
+        app:layout_constraintTop_toBottomOf="@id/tv_nasi"
+        app:layout_constraintStart_toStartOf="@id/guidelinevertical"
+        android:text="@string/list_menu_makanan"
+        android:layout_marginTop="10dp"
+        />
+    <ImageView
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintWidth_percent="0.12"
+        android:src="@drawable/baseline_list_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_minuman"
+        android:layout_marginTop="10dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FoodOrder</string>
+    <string name="hello_dayat">Hello SANAK!</string>
+    <string name="hai_binarian">Hai Binarian,</string>
+    <string name="mau_makan_apa_hari_ini">Mau makan apa hari ini ?</string>
+    <string name="nasi">Nasi</string>
+    <string name="mie">Mie</string>
+    <string name="minuman">Minuman</string>
+    <string name="snack">Snack</string>
+    <string name="list_menu_makanan">List Menu Makanan</string>
+    <string name="cart">cart</string>
+</resources>
