@@ -121,6 +121,7 @@
     <ImageView
         android:id="@+id/iv_minuman"
         style="@style/image_style"
+        android:layout_marginTop="8dp"
         android:src="@drawable/minuman"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -135,6 +136,7 @@
         app:layout_constraintStart_toStartOf="@id/iv_minuman"
         app:layout_constraintTop_toBottomOf="@id/iv_minuman" />
     <TextView
+        android:id="@+id/list_minuman"
         style="@style/Title_Style"
         app:layout_constraintTop_toBottomOf="@id/tv_nasi"
         app:layout_constraintStart_toStartOf="@id/guidelinevertical"
@@ -151,5 +153,14 @@
         app:layout_constraintTop_toBottomOf="@id/tv_minuman"
         android:layout_marginTop="10dp"
         />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleviewFood"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="2"
+        app:layout_constraintTop_toBottomOf="@id/list_minuman"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_food"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

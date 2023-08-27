@@ -9,4 +9,7 @@
     <string name="snack">Snack</string>
     <string name="list_menu_makanan">List Menu Makanan</string>
     <string name="cart">cart</string>
+    <string name="image_food">image_food</string>
+    <string name="food_name">Food Name</string>
+    <string name="rp_40_000">Rp.40.000</string>
 </resources>
