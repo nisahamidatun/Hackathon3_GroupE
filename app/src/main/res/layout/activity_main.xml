@@ -122,7 +122,7 @@
         android:id="@+id/iv_minuman"
         style="@style/image_style"
         android:layout_marginTop="8dp"
-        android:src="@drawable/minuman"
+        android:src="@drawable/minumans"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/iv_snack"

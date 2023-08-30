@@ -7,19 +7,22 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.foodorder.data.FoodLocalDataSource
+import com.binar.foodorder.databinding.ActivityMainBinding
 import com.binar.foodorder.repository.FoodRepository
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding :ActivityMainBinding
     private lateinit var foodViewModel:FoodViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val foodDataSource = FoodLocalDataSource()
         val foodRepository = FoodRepository(foodDataSource)
         val viewModelFactory = FoodViewModelFactory(foodRepository)
         foodViewModel = ViewModelProvider(this, viewModelFactory)[FoodViewModel::class.java]
-        val recyclerView = findViewById<RecyclerView>(R.id.recycleviewFood)
+        val recyclerView = binding.recycleviewFood
         val adapter = FoodAdapter(foodViewModel.foods.value ?: emptyList())
 
         recyclerView.layoutManager = GridLayoutManager(this,2)
