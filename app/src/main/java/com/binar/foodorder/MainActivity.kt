@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         val foodRepository = FoodRepository(foodDataSource)
         val viewModelFactory = FoodViewModelFactory(foodRepository)
         foodViewModel = ViewModelProvider(this, viewModelFactory)[FoodViewModel::class.java]
-
         val recyclerView = findViewById<RecyclerView>(R.id.recycleviewFood)
         val adapter = FoodAdapter(foodViewModel.foods.value ?: emptyList())
 
