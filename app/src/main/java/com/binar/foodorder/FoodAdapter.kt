@@ -14,8 +14,9 @@ import com.bumptech.glide.Glide
 class FoodAdapter(private val foods: List<Food>):RecyclerView.Adapter<FoodAdapter.ViewHolder>(){
     class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView) {
        fun bind(food: Food){
+           val formattedPrice = "Rp ${food.Price.toInt()}"
             itemView.findViewById<TextView>(R.id.foodName).text = food.name
-            itemView.findViewById<TextView>(R.id.foodPrice).text = food.Price.toInt().toString()
+            itemView.findViewById<TextView>(R.id.foodPrice).text = formattedPrice
            Glide.with(itemView.context)
                .load(food.Image)
                .into(itemView.findViewById(R.id.foodImage))

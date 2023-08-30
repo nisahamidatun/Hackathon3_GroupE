@@ -9,7 +9,7 @@ import com.binar.foodorder.repository.FoodRepository
 
 class FoodViewModelFactory(private val foodRepository: FoodRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(FoodViewModel::class.java)){
+        if (modelClass.isAssignableFrom(FoodViewModel::class.java)) {
             return FoodViewModel(foodRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

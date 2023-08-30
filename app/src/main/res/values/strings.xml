@@ -12,4 +12,6 @@
     <string name="image_food">image_food</string>
     <string name="food_name">Food Name</string>
     <string name="rp_40_000">Rp.40.000</string>
+    <string name="currency_format">Rp %s</string>
+
 </resources>
