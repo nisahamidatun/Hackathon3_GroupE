@@ -1,4 +1,4 @@
-package com.binar.foodorder
+package com.binar.foodorder.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

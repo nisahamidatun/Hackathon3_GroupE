@@ -1,9 +1,8 @@
-package com.binar.foodorder
+package com.binar.foodorder.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.foodorder.data.Food
 import com.binar.foodorder.databinding.ItemFoodBinding
@@ -12,7 +11,21 @@ import com.bumptech.glide.Glide
 /**
  * Created by Rahmat Hidayat on 27/08/2023.
  */
-class FoodAdapter(private val foods: List<Food>):RecyclerView.Adapter<FoodAdapter.ViewHolder>(){
+class FoodAdapter(private var foods: List<Food>):RecyclerView.Adapter<FoodAdapter.ViewHolder>(){
+    fun updateData(newFoods: List<Food>) {
+        val diffResult = DiffUtil.calculateDiff(FoodDiffUtil(foods, newFoods))
+        foods = newFoods
+        diffResult.dispatchUpdatesTo(this)
+    }
+    interface OnItemClickListener {
+        fun onItemClick(food: Food)
+    }
+
+    private var itemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        itemClickListener = listener
+    }
     class ViewHolder(binding:ItemFoodBinding):RecyclerView.ViewHolder(binding.root) {
         private var name = binding.foodName
         private var price = binding.foodPrice
@@ -30,7 +43,17 @@ class FoodAdapter(private val foods: List<Food>):RecyclerView.Adapter<FoodAdapte
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemViewBinding =
             ItemFoodBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(itemViewBinding)
+        val viewHolder = ViewHolder(itemViewBinding)
+
+        viewHolder.itemView.setOnClickListener {
+            val position = viewHolder.bindingAdapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                val clickedFood = foods[position]
+                clickedFood.let { itemClickListener?.onItemClick(it) }
+            }
+        }
+
+        return viewHolder
     }
 
     override fun getItemCount(): Int = foods.size
