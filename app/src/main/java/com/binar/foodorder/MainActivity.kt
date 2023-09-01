@@ -18,6 +18,7 @@ import com.binar.foodorder.repository.FoodRepository
 import com.binar.foodorder.viewmodel.FoodViewModel
 import com.binar.foodorder.viewmodel.FoodViewModelFactory
 import com.google.android.material.snackbar.Snackbar
+import com.shashank.sony.fancytoastlib.FancyToast
 
 
 class MainActivity : AppCompatActivity() {
@@ -39,28 +40,12 @@ class MainActivity : AppCompatActivity() {
         adapter.setOnItemClickListener(object : FoodAdapter.OnItemClickListener {
             override fun onItemClick(food: Food) {
                 val itemName = food.name
-                showCustomToast(binding.root,"Yourchoice => $itemName")
+                FancyToast.makeText(this@MainActivity,"Your choices food $itemName !",FancyToast.LENGTH_LONG,FancyToast.INFO,true).show();
             }
         })
         foodViewModel.foods.observe(this) { foods ->
             adapter.updateData(foods)
         }
-    }
-
-    fun showCustomToast(view: View, message: String) {
-        val snackbar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT)
-        val snackbarView = snackbar.view
-        val params = snackbarView.layoutParams as ViewGroup.MarginLayoutParams
-        params.setMargins(16, 0, 16, 16) // Set custom margins if needed
-        snackbarView.layoutParams = params
-        snackbarView.background = ContextCompat.getDrawable(view.context, R.drawable.bg_custom_toast)
-
-        val textView = snackbarView.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
-        textView.setTextColor(ContextCompat.getColor(view.context, android.R.color.white))
-        textView.textAlignment = View.TEXT_ALIGNMENT_CENTER
-        textView.gravity = Gravity.CENTER
-
-        snackbar.show()
     }
 
 }
