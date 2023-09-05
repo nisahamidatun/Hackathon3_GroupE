@@ -3,5 +3,10 @@
     <style name="Base.Theme.FoodOrder" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Tambahkan item warna primer untuk mode gelap -->
+        <item name="colorPrimaryDark">@color/my_dark_primary</item>
+        <item name="colorPrimary">@color/my_dark_primary</item>
+        <!-- Tambahkan item warna aksen untuk mode gelap (opsional) -->
+        <item name="colorAccent">@color/my_dark_accent</item>
     </style>
 </resources>

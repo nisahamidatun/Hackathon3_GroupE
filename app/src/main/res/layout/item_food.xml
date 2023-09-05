@@ -4,7 +4,7 @@
     android:id="@+id/cardView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="16dp"
+    android:layout_margin="9dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp">
 
@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="9dp">
 
         <ImageView
             android:id="@+id/foodImage"
@@ -27,8 +27,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/food_name"
-            android:textSize="12sp"
             android:textStyle="bold"
+            style="@style/TextAppearance.Material3.BodySmall"
             android:layout_marginTop="8dp" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/currency_format"
-            android:textSize="12sp"
+            style="@style/TextAppearance.Material3.BodySmall"
             android:layout_marginTop="4dp" />
 
     </LinearLayout>
