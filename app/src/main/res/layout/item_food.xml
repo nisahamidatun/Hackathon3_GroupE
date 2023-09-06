@@ -15,7 +15,7 @@
         android:padding="9dp">
 
         <ImageView
-            android:id="@+id/foodImage"
+            android:id="@+id/tv_foodimage"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/ic_launcher_foreground"
@@ -23,7 +23,7 @@
             android:contentDescription="@string/image_food" />
 
         <TextView
-            android:id="@+id/foodName"
+            android:id="@+id/tv_foodname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/food_name"
@@ -32,7 +32,7 @@
             android:layout_marginTop="8dp" />
 
         <TextView
-            android:id="@+id/foodPrice"
+            android:id="@+id/tv_foodprice"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/currency_format"
