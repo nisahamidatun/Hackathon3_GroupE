@@ -52,7 +52,6 @@ class FoodAdapter(private var foods: List<Food>):RecyclerView.Adapter<FoodAdapte
                 clickedFood.let { itemClickListener?.onItemClick(it) }
             }
         }
-
         return viewHolder
     }
 
