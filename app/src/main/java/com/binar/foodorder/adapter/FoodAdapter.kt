@@ -3,6 +3,7 @@ package com.binar.foodorder.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.foodorder.data.Food
 import com.binar.foodorder.databinding.ItemFoodBinding
@@ -54,6 +55,7 @@ class FoodAdapter(private var foods: List<Food>) : RecyclerView.Adapter<FoodAdap
                 clickedFood.let { itemClickListener?.onItemClick(it) }
             }
         }
+
         return viewHolder
     }
 
