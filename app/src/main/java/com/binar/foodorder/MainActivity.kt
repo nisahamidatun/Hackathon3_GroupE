@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.foodorder.adapter.FoodAdapter
 import com.binar.foodorder.data.Food
 import com.binar.foodorder.data.FoodLocalDataSource
@@ -17,6 +18,9 @@ import com.shashank.sony.fancytoastlib.FancyToast
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var foodViewModel: FoodViewModel
+    private var isGridview = true
+    private val gridLayoutManager = GridLayoutManager(this,2)
+    private val linearLayoutManager = LinearLayoutManager(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -26,11 +30,24 @@ class MainActivity : AppCompatActivity() {
         val viewModelFactory = FoodViewModelFactory(foodRepository)
         foodViewModel = ViewModelProvider(this, viewModelFactory)[FoodViewModel::class.java]
         val recyclerView = binding.recycleviewFood
-        val adapter = FoodAdapter(foodViewModel.foods.value ?: emptyList())
-
-        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        val adapter = FoodAdapter(foodViewModel.foods.value ?: emptyList(),isGridview)
+        recyclerView.layoutManager = gridLayoutManager
         recyclerView.adapter = adapter
-        adapter.setOnItemClickListener(object : FoodAdapter.OnItemClickListener {
+        val iconList = binding.iconList
+        iconList.setOnClickListener {
+            isGridview = !isGridview
+            if (isGridview){
+                recyclerView.layoutManager = gridLayoutManager
+                iconList.setImageResource(R.drawable.icon_grid)
+
+            }else{
+                recyclerView.layoutManager = linearLayoutManager
+                iconList.setImageResource(R.drawable.baseline_list_24)
+            }
+            adapter.updateData(foodViewModel.foods.value ?: emptyList(), isGridview)
+
+        }
+        adapter.setOnItemClickListener(object :FoodAdapter.OnItemClickListener{
             override fun onItemClick(food: Food) {
                 val itemName = food.name
                 FancyToast.makeText(
@@ -41,10 +58,10 @@ class MainActivity : AppCompatActivity() {
                     true
                 ).show()
             }
+
         })
         foodViewModel.foods.observe(this) { foods ->
-            adapter.updateData(foods)
+            adapter.updateData(foods,true)
         }
     }
-
 }

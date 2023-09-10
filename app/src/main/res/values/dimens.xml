@@ -1,0 +1,4 @@
+<resources>
+    <!-- Sesuaikan nilai padding horizontal sesuai kebutuhan -->
+    <dimen name="item_horizontal_padding">8dp</dimen>
+</resources>

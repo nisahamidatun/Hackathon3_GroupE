@@ -3,66 +3,66 @@ package com.binar.foodorder.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.binar.foodorder.data.Food
 import com.binar.foodorder.databinding.ItemFoodBinding
-import com.bumptech.glide.Glide
+import com.binar.foodorder.databinding.ItemFoodFullWidthBinding
 
 /**
  * Created by Rahmat Hidayat on 27/08/2023.
  */
-class FoodAdapter(private var foods: List<Food>) : RecyclerView.Adapter<FoodAdapter.ViewHolder>() {
-    fun updateData(newFoods: List<Food>) {
-        val diffResult = DiffUtil.calculateDiff(FoodDiffUtil(foods, newFoods))
-        foods = newFoods
-        diffResult.dispatchUpdatesTo(this)
-    }
-
+class FoodAdapter(private var foods: List<Food>, private var isGridview: Boolean) :
+    RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    private val VIEW_TYPE_DEFAULT = 0
+    private val VIEW_TYPE_FULL_WIDTH = 1
     interface OnItemClickListener {
         fun onItemClick(food: Food)
     }
 
-    private var itemClickListener: OnItemClickListener? = null
+    var itemClickListener: OnItemClickListener? = null
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
         itemClickListener = listener
     }
+    fun updateData(newFoods: List<Food>, isGridview: Boolean) {
+        val diffResult = DiffUtil.calculateDiff(FoodDiffUtil(foods, newFoods))
+        foods = newFoods
+        this.isGridview = isGridview
+        diffResult.dispatchUpdatesTo(this)
+    }
 
-    class ViewHolder(binding: ItemFoodBinding) : RecyclerView.ViewHolder(binding.root) {
-        private var name = binding.tvFoodname
-        private var price = binding.tvFoodprice
-        private var image = binding.tvFoodimage
-        fun bind(food: Food) {
-            val formattedPrice = "Rp ${food.Price.toInt()}"
-            name.text = food.name
-            price.text = formattedPrice
-            Glide.with(itemView.context)
-                .load(food.Image)
-                .into(image)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        return when (viewType) {
+            VIEW_TYPE_DEFAULT -> {
+                val itemViewBinding = ItemFoodBinding.inflate(inflater, parent, false)
+                GridViewHolder(itemViewBinding)
+            }
+
+            VIEW_TYPE_FULL_WIDTH -> {
+                val itemViewBinding = ItemFoodFullWidthBinding.inflate(inflater, parent, false)
+                ListViewHolder(itemViewBinding)
+            }
+
+            else -> throw IllegalArgumentException("Invalid viewType: $viewType")
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemViewBinding =
-            ItemFoodBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        val viewHolder = ViewHolder(itemViewBinding)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is GridViewHolder -> {
+                holder.bindDefault(foods[position])
+            }
 
-        viewHolder.itemView.setOnClickListener {
-            val position = viewHolder.bindingAdapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-                val clickedFood = foods[position]
-                clickedFood.let { itemClickListener?.onItemClick(it) }
+            is ListViewHolder -> {
+                holder.bindFullWidth(foods[position])
             }
         }
-
-        return viewHolder
     }
 
     override fun getItemCount(): Int = foods.size
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(foods[position])
+    override fun getItemViewType(position: Int): Int {
+        return if (isGridview) VIEW_TYPE_DEFAULT else VIEW_TYPE_FULL_WIDTH
     }
 
 }
