@@ -45,14 +45,6 @@ class DetailFood : Fragment() {
 
     companion object {
         private const val ARG_FOOD = "food"
-
-        fun newInstance(food: Food): DetailFood {
-            val fragment = DetailFood()
-            val args = Bundle()
-            args.putParcelable(ARG_FOOD, food)
-            fragment.arguments = args
-            return fragment
-        }
     }
 
 }

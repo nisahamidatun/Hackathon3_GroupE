@@ -59,7 +59,6 @@ class FoodAdapter(private var foods: List<Food>, private var isGridview: Boolean
             }
         }
         holder.itemView.setOnClickListener {
-            // Periksa apakah itemClickListener telah diatur
             itemClickListener?.onItemClick(foods[position])
         }
     }

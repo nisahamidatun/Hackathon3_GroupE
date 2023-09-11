@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/food_navigation"
+    app:startDestination="@id/homeFood">
+
+    <fragment
+        android:id="@+id/homeFood"
+        android:name="com.binar.foodorder.HomeFood"
+        android:label="HomeFood" >
+        <action
+            android:id="@+id/action_homeFood_to_detailFood"
+            app:destination="@id/detailFood" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFood"
+        android:name="com.binar.foodorder.DetailFood"
+        android:label="DetailFood" >
+        <argument
+            android:name="food"
+            app:argType="com.binar.foodorder.data.Food" />
+        <action
+            android:id="@+id/action_detailFood_to_homeFood"
+            app:destination="@id/homeFood" />
+    </fragment>
+
+</navigation>

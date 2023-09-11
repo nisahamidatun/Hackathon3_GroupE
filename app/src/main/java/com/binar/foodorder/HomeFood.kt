@@ -1,12 +1,15 @@
 package com.binar.foodorder
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDirections
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.foodorder.adapter.FoodAdapter
@@ -16,7 +19,6 @@ import com.binar.foodorder.databinding.FragmentHomeFoodBinding
 import com.binar.foodorder.repository.FoodRepository
 import com.binar.foodorder.viewmodel.FoodViewModel
 import com.binar.foodorder.viewmodel.FoodViewModelFactory
-import com.shashank.sony.fancytoastlib.FancyToast
 
 
 class HomeFood : Fragment() {
@@ -61,31 +63,20 @@ class HomeFood : Fragment() {
         foodViewModel.foods.observe(viewLifecycleOwner) { foods ->
             adapter.updateData(foods, true)
         }
+
+//       val action =  HomeFoodDirections.actionHomeFoodToDetailFood(foods)
+
+
         adapter.setOnItemClickListener(object :FoodAdapter.OnItemClickListener{
             override fun onItemClick(food: Food) {
-                navigateToDetailFragment(food)
-                val itemName = food.name
-                FancyToast.makeText(
-                    requireContext(),
-                    "Your choices food $itemName !",
-                    FancyToast.LENGTH_LONG,
-                    FancyToast.INFO,
-                    true
-                ).show()
+                val action: NavDirections = HomeFoodDirections.actionHomeFoodToDetailFood(food)
+
+                // Melakukan navigasi ke fragment DetailFood dengan mengirimkan data
+                view.findNavController().navigate(action)
             }
 
         })
 
     }
 
-    private fun navigateToDetailFragment(food: Food) {
-        val detailFragment = DetailFood.newInstance(food)
-
-        val fragmentManager = parentFragmentManager
-        fragmentManager.beginTransaction().apply {
-            replace(R.id.fragmentContainer,detailFragment, DetailFood::class.java.simpleName)
-            addToBackStack(null)
-            commit()
-        }
-    }
 }
