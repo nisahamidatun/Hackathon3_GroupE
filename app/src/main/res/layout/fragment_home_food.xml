@@ -147,7 +147,7 @@
         <ImageView
             android:id="@+id/iv_minuman"
             style="@style/image_style"
-            android:src="@drawable/minumans"
+            android:src="@drawable/minuman"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/iv_snack"
