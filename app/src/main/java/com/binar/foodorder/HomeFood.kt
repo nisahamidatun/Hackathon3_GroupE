@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.foodorder.adapter.FoodAdapter
@@ -40,7 +38,7 @@ class HomeFood : Fragment() {
         val foodDataSource = FoodLocalDataSource()
         val foodRepository = FoodRepository(foodDataSource)
         val viewModelFactory = FoodViewModelFactory(foodRepository)
-        foodViewModel = ViewModelProvider(this,viewModelFactory)[FoodViewModel::class.java]
+        foodViewModel = ViewModelProvider(this, viewModelFactory)[FoodViewModel::class.java]
         val recyclerView = binding.recycleviewFood
         val adapter = FoodAdapter(emptyList(), isGridview)
         val gridLayoutManager = GridLayoutManager(requireContext(), 2)
@@ -64,14 +62,9 @@ class HomeFood : Fragment() {
             adapter.updateData(foods, true)
         }
 
-//       val action =  HomeFoodDirections.actionHomeFoodToDetailFood(foods)
-
-
-        adapter.setOnItemClickListener(object :FoodAdapter.OnItemClickListener{
+        adapter.setOnItemClickListener(object : FoodAdapter.OnItemClickListener {
             override fun onItemClick(food: Food) {
                 val action: NavDirections = HomeFoodDirections.actionHomeFoodToDetailFood(food)
-
-                // Melakukan navigasi ke fragment DetailFood dengan mengirimkan data
                 view.findNavController().navigate(action)
             }
 
