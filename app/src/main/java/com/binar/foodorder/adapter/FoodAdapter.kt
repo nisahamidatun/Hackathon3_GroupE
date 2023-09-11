@@ -58,6 +58,10 @@ class FoodAdapter(private var foods: List<Food>, private var isGridview: Boolean
                 holder.bindFullWidth(foods[position])
             }
         }
+        holder.itemView.setOnClickListener {
+            // Periksa apakah itemClickListener telah diatur
+            itemClickListener?.onItemClick(foods[position])
+        }
     }
 
     override fun getItemCount(): Int = foods.size
