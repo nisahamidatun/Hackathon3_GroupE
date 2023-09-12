@@ -11,4 +11,5 @@ data class Food(
     val name:String,
     val Image:String,
     val Price:Double,
+    val description:String,
 ):Parcelable

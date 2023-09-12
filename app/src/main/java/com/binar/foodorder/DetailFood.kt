@@ -44,13 +44,17 @@ class DetailFood : Fragment() {
                 .into(image)
             binding.tvFoodDetail.text = food?.name
             binding.textPriceDetail.text = priceFood
+            binding.tvDescription.text = food?.description
         }
         binding.mapView.setOnClickListener {
-            // Buat Intent untuk membuka Google Maps dengan link yang diberikan
             val gmmIntentUri = Uri.parse("https://maps.app.goo.gl/h4wQKqaBuXzftGK77")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             startActivity(mapIntent)
         }
+        binding.icBack.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
     }
 
     companion object {
