@@ -57,7 +57,7 @@ class DetailFood : Fragment() {
             requireActivity().onBackPressed()
         }
         binding.tvDecrement.setOnClickListener {
-            if (quantity > 0) {
+            if (quantity > 1) {
                 quantity--
                 updateCartButton()
             }
@@ -73,7 +73,7 @@ class DetailFood : Fragment() {
     }
 
     private fun updateCartButton() {
-        val food = food 
+        val food = food
         val pricePerItem = food?.Price ?: 0
 
         val totalPrice = quantity * pricePerItem.toInt()
