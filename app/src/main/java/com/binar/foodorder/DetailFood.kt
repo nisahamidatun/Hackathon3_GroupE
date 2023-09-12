@@ -1,5 +1,7 @@
 package com.binar.foodorder
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,12 +36,20 @@ class DetailFood : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val image = binding.imageView
+
         food.let {
+            val priceFood = "Rp. ${food?.Price}"
             Glide.with(this)
                 .load(food?.Image)
                 .into(image)
-            binding.textName.text = food?.name
-            binding.textPrice.text = food?.Price.toString()
+            binding.tvFoodDetail.text = food?.name
+            binding.textPriceDetail.text = priceFood
+        }
+        binding.mapView.setOnClickListener {
+            // Buat Intent untuk membuka Google Maps dengan link yang diberikan
+            val gmmIntentUri = Uri.parse("https://maps.app.goo.gl/h4wQKqaBuXzftGK77")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            startActivity(mapIntent)
         }
     }
 
