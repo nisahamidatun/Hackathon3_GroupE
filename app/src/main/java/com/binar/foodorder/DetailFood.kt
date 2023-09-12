@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide
 class DetailFood : Fragment() {
     private var food: Food? = null
     private lateinit var binding: FragmentDetailFoodBinding
-
+    private var quantity = 1 // Variabel untuk menyimpan jumlah
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         food = arguments?.getParcelable(ARG_FOOD)
@@ -39,12 +39,14 @@ class DetailFood : Fragment() {
 
         food.let {
             val priceFood = "Rp. ${food?.Price}"
+            val resultPrice = "Tambahkan Ke keranjang $priceFood"
             Glide.with(this)
                 .load(food?.Image)
                 .into(image)
             binding.tvFoodDetail.text = food?.name
             binding.textPriceDetail.text = priceFood
             binding.tvDescription.text = food?.description
+            binding.btnCart.text = resultPrice
         }
         binding.mapView.setOnClickListener {
             val gmmIntentUri = Uri.parse("https://maps.app.goo.gl/h4wQKqaBuXzftGK77")
@@ -54,7 +56,37 @@ class DetailFood : Fragment() {
         binding.icBack.setOnClickListener {
             requireActivity().onBackPressed()
         }
+        binding.tvDecrement.setOnClickListener {
+            if (quantity > 0) {
+                quantity--
+                updateCartButton()
+            }
+        }
+        binding.tvIncrement.setOnClickListener {
+            quantity++
+            updateCartButton()
+        }
+        updateCartButton()
+//        updateQuantityTextView()
 
+
+    }
+
+    private fun updateCartButton() {
+        val food = food 
+        val pricePerItem = food?.Price ?: 0
+
+        val totalPrice = quantity * pricePerItem.toInt()
+        val priceFood = "Rp. $totalPrice"
+
+        val resultPrice = if (quantity > 1) {
+            "Tambahkan $quantity item ke keranjang - $priceFood"
+        } else {
+            "Tambahkan item ke keranjang - $priceFood"
+        }
+        binding.tvQuantity.text = quantity.toString()
+
+        binding.btnCart.text = resultPrice
     }
 
     companion object {

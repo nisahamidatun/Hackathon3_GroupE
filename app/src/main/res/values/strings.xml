@@ -23,5 +23,9 @@
     <string name="deskripsi_lokasi">Jl. BSD Green Office Park Jl.BSD Grand Boulevard,Sampora, BSD,Kabupaten Tangerang,Banten 15345</string>
     <string name="back_ic">back_ic</string>
     <string name="description_food">Varian dari pangsit tradisional China yang disajikan dengan cara dikukus dan digoreng.</string>
+    <string name="text_btn_cart">Tambah Ke keranjang -</string>
+    <string name="decrement">-</string>
+    <string name="tv_increment">+</string>
+    <string name="tv_quantity">1</string>
 
 </resources>
