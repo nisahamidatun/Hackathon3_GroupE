@@ -5,24 +5,38 @@
     android:layout_height="match_parent"
     android:padding="10dp">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:scaleType="centerCrop"
-        android:src="@drawable/snack"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ic_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/back_ic"
-        android:padding="24dp"
-        android:src="@drawable/back"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_detail"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/snack"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ic_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/back_ic"
+            android:padding="24dp"
+            android:src="@drawable/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/entity_food"
+    app:layout_constraintTop_toBottomOf="@+id/header_detail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/tv_food_detail"
@@ -33,7 +47,8 @@
         android:text="@string/name_food"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        app:layout_constraintTop_toTopOf="@id/entity_food"
+         />
 
 
     <TextView
@@ -44,7 +59,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/currency_format"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
+        app:layout_constraintTop_toTopOf="@id/entity_food" />
 
     <TextView
         android:id="@+id/tv_description"
@@ -55,100 +70,118 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_food_detail" />
 
-    <View
-        android:id="@+id/map_view"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_description" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/iv_ic_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="24dp"
-        android:src="@drawable/shop_location"
-        app:layout_constraintStart_toStartOf="@id/map_view"
-        app:layout_constraintTop_toTopOf="@id/map_view" />
-
-    <TextView
-        android:id="@+id/tv_lokasi"
-        style="@style/TextAppearance.Material3.ActionBar.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/textlokasi"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/iv_ic_location"
-        app:layout_constraintTop_toTopOf="@id/map_view" />
-
-    <TextView
-        android:id="@+id/tv_deskripsi_lokasi"
-        style="@style/TextAppearance.Material3.TitleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/deskripsi_lokasi"
-        app:layout_constraintBottom_toBottomOf="@id/map_view"
-        app:layout_constraintStart_toEndOf="@id/iv_ic_location"
-        app:layout_constraintTop_toBottomOf="@id/tv_lokasi"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/tv_decrement"
-        style="@style/TextAppearance.Material3.ActionBar.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_background"
-        android:padding="18dp"
-        android:text="@string/decrement"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@id/btn_cart"
-        app:layout_constraintEnd_toStartOf="@+id/tv_quantity"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_quantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_background"
-        android:padding="18dp"
-        android:textStyle="bold"
-        android:text="@string/tv_quantity"
-        android:textSize="15sp"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@id/btn_cart"
-        app:layout_constraintEnd_toStartOf="@+id/tv_increment"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_decrement" />
-
-    <TextView
-        android:id="@+id/tv_increment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rounded_background"
-        android:padding="18dp"
-        android:text="@string/tv_increment"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@id/btn_cart"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_quantity" />
-
-    <Button
-        android:id="@+id/btn_cart"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/location"
+        app:layout_constraintTop_toBottomOf="@id/entity_food"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/text_btn_cart"
-        android:textColor="@color/black"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+        <View
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/location" />
+
+        <ImageView
+            android:id="@+id/iv_ic_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="24dp"
+            android:src="@drawable/shop_location"
+            app:layout_constraintStart_toStartOf="@id/map_view"
+            app:layout_constraintTop_toTopOf="@id/map_view" />
+
+        <TextView
+            android:id="@+id/tv_lokasi"
+            style="@style/TextAppearance.Material3.ActionBar.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/textlokasi"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iv_ic_location"
+            app:layout_constraintTop_toTopOf="@id/map_view" />
+
+        <TextView
+            android:id="@+id/tv_deskripsi_lokasi"
+            style="@style/TextAppearance.Material3.TitleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/deskripsi_lokasi"
+            app:layout_constraintBottom_toBottomOf="@id/map_view"
+            app:layout_constraintStart_toEndOf="@id/iv_ic_location"
+            app:layout_constraintTop_toBottomOf="@id/tv_lokasi"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:id="@+id/add_to_cart"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       app:layout_constraintBottom_toBottomOf="parent"
+       >
+       <TextView
+           android:id="@+id/tv_decrement"
+           style="@style/TextAppearance.Material3.ActionBar.Title"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/rounded_background"
+           android:padding="15dp"
+           android:text="@string/decrement"
+           android:textSize="15sp"
+           android:textStyle="bold"
+           android:layout_margin="10dp"
+           app:layout_constraintBottom_toTopOf="@id/btn_cart"
+           app:layout_constraintEnd_toStartOf="@+id/tv_quantity"
+           app:layout_constraintHorizontal_bias="0.5"
+           app:layout_constraintHorizontal_chainStyle="packed"
+           app:layout_constraintStart_toStartOf="parent" />
+
+       <TextView
+           android:id="@+id/tv_quantity"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/rounded_background"
+           android:padding="15dp"
+           android:textStyle="bold"
+           android:text="@string/tv_quantity"
+           android:textSize="15sp"
+           android:layout_margin="10dp"
+           app:layout_constraintBottom_toTopOf="@id/btn_cart"
+           app:layout_constraintEnd_toStartOf="@+id/tv_increment"
+           app:layout_constraintHorizontal_bias="0.5"
+           app:layout_constraintStart_toEndOf="@+id/tv_decrement" />
+
+       <TextView
+           android:id="@+id/tv_increment"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/rounded_background"
+           android:padding="15dp"
+           android:text="@string/tv_increment"
+           android:textSize="15sp"
+           android:textStyle="bold"
+           android:layout_margin="10dp"
+           app:layout_constraintBottom_toTopOf="@id/btn_cart"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.5"
+           app:layout_constraintStart_toEndOf="@+id/tv_quantity" />
+
+       <Button
+           android:id="@+id/btn_cart"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="@string/text_btn_cart"
+           android:textColor="@color/black"
+           android:textSize="15sp"
+           android:textStyle="bold"
+           app:layout_constraintBottom_toBottomOf="parent" />
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
