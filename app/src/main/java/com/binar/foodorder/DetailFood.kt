@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide
 class DetailFood : Fragment() {
     private var food: Food? = null
     private lateinit var binding: FragmentDetailFoodBinding
-    private var quantity = 1 // Variabel untuk menyimpan jumlah
+    private var quantity = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         food = arguments?.getParcelable(ARG_FOOD)
@@ -38,15 +38,13 @@ class DetailFood : Fragment() {
         val image = binding.imageView
 
         food.let {
-            val priceFood = "Rp. ${food?.Price}"
-            val resultPrice = "Tambahkan Ke keranjang $priceFood"
+            val priceFood = "Rp. ${food?.Price?.toInt()}"
             Glide.with(this)
                 .load(food?.Image)
                 .into(image)
             binding.tvFoodDetail.text = food?.name
             binding.textPriceDetail.text = priceFood
             binding.tvDescription.text = food?.description
-            binding.btnCart.text = resultPrice
         }
         binding.mapView.setOnClickListener {
             val gmmIntentUri = Uri.parse("https://maps.app.goo.gl/h4wQKqaBuXzftGK77")
@@ -67,9 +65,6 @@ class DetailFood : Fragment() {
             updateCartButton()
         }
         updateCartButton()
-//        updateQuantityTextView()
-
-
     }
 
     private fun updateCartButton() {
@@ -79,11 +74,9 @@ class DetailFood : Fragment() {
         val totalPrice = quantity * pricePerItem.toInt()
         val priceFood = "Rp. $totalPrice"
 
-        val resultPrice = if (quantity > 1) {
-            "Tambahkan $quantity item ke keranjang - $priceFood"
-        } else {
-            "Tambahkan item ke keranjang - $priceFood"
-        }
+        val resultPrice =
+            if (quantity > 1) "Tambahkan  ke Keranjang - $priceFood" else "Tambahkan  ke Keranjang - $priceFood"
+
         binding.tvQuantity.text = quantity.toString()
 
         binding.btnCart.text = resultPrice
