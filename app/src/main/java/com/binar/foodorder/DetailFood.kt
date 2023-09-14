@@ -17,9 +17,7 @@ class DetailFood : Fragment() {
     private var quantity = 1
 
     private val  food: Food? by lazy{
-//        DetailFoodArgs.fromBundle(arguments as Bundle).food
-
-        arguments?.getParcelable(ARG_FOOD)
+        DetailFoodArgs.fromBundle(arguments as Bundle).food
     }
 
 
@@ -81,10 +79,6 @@ class DetailFood : Fragment() {
         binding.tvQuantity.text = quantity.toString()
 
         binding.btnCart.text = resultPrice
-    }
-
-    companion object {
-        const val ARG_FOOD = "food"
     }
 
 }

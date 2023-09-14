@@ -18,6 +18,7 @@ import com.binar.foodorder.databinding.FragmentHomeFoodBinding
 import com.binar.foodorder.repository.FoodRepository
 import com.binar.foodorder.viewmodel.FoodViewModel
 import com.binar.foodorder.viewmodel.FoodViewModelFactory
+import com.shashank.sony.fancytoastlib.FancyToast
 
 
 class HomeFood : Fragment() {
@@ -65,12 +66,16 @@ class HomeFood : Fragment() {
 
         adapter.setOnItemClickListener(object : FoodAdapter.OnItemClickListener {
             override fun onItemClick(food: Food) {
-//                val action: NavDirections = HomeFoodDirections.actionHomeFoodToDetailFood(food)
-//                view.findNavController().navigate(action)
+                val action: NavDirections = HomeFoodDirections.actionHomeFoodToDetailFood(food)
+                view.findNavController().navigate(action)
 
-                findNavController().navigate(R.id.action_homeFood_to_detailFood,Bundle().apply {
-                    putParcelable(DetailFood.ARG_FOOD,food)
-                })
+                FancyToast.makeText(
+                    requireContext(),
+                    "Your choices food ${food.name}!",
+                    FancyToast.LENGTH_LONG,
+                    FancyToast.INFO,
+                    true
+                ).show()
             }
 
         })
