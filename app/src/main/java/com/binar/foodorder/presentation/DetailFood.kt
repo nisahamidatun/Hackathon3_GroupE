@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import coil.load
 import com.binar.foodorder.model.Food
 import com.binar.foodorder.databinding.FragmentDetailFoodBinding
 import com.bumptech.glide.Glide
@@ -38,9 +39,7 @@ class DetailFood : Fragment() {
 
         food.let {
             val priceFood = "Rp. ${food?.Price?.toInt()}"
-            Glide.with(this)
-                .load(food?.Image)
-                .into(image)
+            image.load(food?.Image)
             binding.tvFoodDetail.text = food?.name
             binding.textPriceDetail.text = priceFood
             binding.tvDescription.text = food?.description

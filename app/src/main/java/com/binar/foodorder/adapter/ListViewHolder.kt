@@ -1,6 +1,7 @@
 package com.binar.foodorder.adapter
 
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.binar.foodorder.model.Food
 import com.binar.foodorder.databinding.ItemFoodFullWidthBinding
 import com.bumptech.glide.Glide
@@ -18,10 +19,7 @@ class ListViewHolder(private val fullWidthBinding: ItemFoodFullWidthBinding) :
         val formattedPrice = "Rp ${food.Price.toInt()}"
         name.text = food.name
         price.text = formattedPrice
-        Glide.with(itemView.context)
-            .load(food.Image)
-            .into(image)
-
+        image.load(food.Image)
     }
 
 }

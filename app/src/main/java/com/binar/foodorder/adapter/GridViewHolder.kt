@@ -1,6 +1,7 @@
 package com.binar.foodorder.adapter
 
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.binar.foodorder.model.Food
 import com.binar.foodorder.databinding.ItemFoodBinding
 import com.bumptech.glide.Glide
@@ -16,17 +17,7 @@ class GridViewHolder(private val binding: ItemFoodBinding):RecyclerView.ViewHold
         val formattedPrice = "Rp ${food.Price.toInt()}"
         name.text = food.name
         price.text = formattedPrice
-        Glide.with(itemView.context)
-            .load(food.Image)
-            .into(image)
-        itemView.setOnClickListener {
-            val position = bindingAdapterPosition
-            if (position != RecyclerView.NO_POSITION) {
-                val clickedFood = food
-                clickedFood.let { itemClickListener?.onItemClick(it) }
-            }
-        }
-
+        image.load(food.Image)
     }
 
 
