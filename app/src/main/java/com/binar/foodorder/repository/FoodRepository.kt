@@ -1,7 +1,7 @@
 package com.binar.foodorder.repository
 
-import com.binar.foodorder.data.Food
-import com.binar.foodorder.data.FoodLocalDataSource
+import com.binar.foodorder.model.Food
+import com.binar.foodorder.model.FoodLocalDataSource
 
 /**
  * Created by Rahmat Hidayat on 27/08/2023.

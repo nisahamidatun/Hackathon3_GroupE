@@ -1,4 +1,4 @@
-package com.binar.foodorder
+package com.binar.foodorder.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.binar.foodorder.R
 import com.binar.foodorder.adapter.FoodAdapter
-import com.binar.foodorder.data.Food
-import com.binar.foodorder.data.FoodLocalDataSource
 import com.binar.foodorder.databinding.FragmentHomeFoodBinding
+import com.binar.foodorder.model.Food
+import com.binar.foodorder.model.FoodLocalDataSource
 import com.binar.foodorder.repository.FoodRepository
 import com.binar.foodorder.viewmodel.FoodViewModel
 import com.binar.foodorder.viewmodel.FoodViewModelFactory

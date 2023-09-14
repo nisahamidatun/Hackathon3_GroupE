@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.binar.foodorder.data.Food
+import com.binar.foodorder.model.Food
 import com.binar.foodorder.databinding.ItemFoodBinding
 import com.binar.foodorder.databinding.ItemFoodFullWidthBinding
 

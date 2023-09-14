@@ -1,7 +1,7 @@
 package com.binar.foodorder.adapter
 
 import androidx.recyclerview.widget.RecyclerView
-import com.binar.foodorder.data.Food
+import com.binar.foodorder.model.Food
 import com.binar.foodorder.databinding.ItemFoodBinding
 import com.bumptech.glide.Glide
 

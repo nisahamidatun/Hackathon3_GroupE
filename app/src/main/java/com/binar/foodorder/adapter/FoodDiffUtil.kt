@@ -1,7 +1,7 @@
 package com.binar.foodorder.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.binar.foodorder.data.Food
+import com.binar.foodorder.model.Food
 
 /**
  * Created by Rahmat Hidayat on 31/08/2023.

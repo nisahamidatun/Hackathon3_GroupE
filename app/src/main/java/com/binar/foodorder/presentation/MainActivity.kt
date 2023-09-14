@@ -1,4 +1,4 @@
-package com.binar.foodorder
+package com.binar.foodorder.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

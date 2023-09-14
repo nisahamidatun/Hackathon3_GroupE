@@ -1,4 +1,4 @@
-package com.binar.foodorder.data
+package com.binar.foodorder.model
 
 /**
  * Created by Rahmat Hidayat on 27/08/2023.

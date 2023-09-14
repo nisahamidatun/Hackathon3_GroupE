@@ -1,4 +1,4 @@
-package com.binar.foodorder.data
+package com.binar.foodorder.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

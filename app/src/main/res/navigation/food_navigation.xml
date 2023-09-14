@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/homeFood"
-        android:name="com.binar.foodorder.HomeFood"
+        android:name="com.binar.foodorder.presentation.HomeFood"
         android:label="HomeFood" >
         <action
             android:id="@+id/action_homeFood_to_detailFood"
@@ -14,14 +14,14 @@
     </fragment>
     <fragment
         android:id="@+id/detailFood"
-        android:name="com.binar.foodorder.DetailFood"
+        android:name="com.binar.foodorder.presentation.DetailFood"
         android:label="DetailFood" >
         <action
             android:id="@+id/action_detailFood_to_homeFood"
             app:destination="@id/homeFood" />
         <argument
             android:name="food"
-            app:argType="com.binar.foodorder.data.Food"
+            app:argType="com.binar.foodorder.model.Food"
             app:nullable="true"
             android:defaultValue="@null" />
     </fragment>

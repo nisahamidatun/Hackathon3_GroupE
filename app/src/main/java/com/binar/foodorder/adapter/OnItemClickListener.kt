@@ -1,6 +1,6 @@
 package com.binar.foodorder.adapter
 
-import com.binar.foodorder.data.Food
+import com.binar.foodorder.model.Food
 
 /**
  * Created by Rahmat Hidayat on 10/09/2023.

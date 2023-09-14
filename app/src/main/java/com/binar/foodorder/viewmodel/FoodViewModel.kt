@@ -3,7 +3,7 @@ package com.binar.foodorder.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.binar.foodorder.data.Food
+import com.binar.foodorder.model.Food
 import com.binar.foodorder.repository.FoodRepository
 
 /**
