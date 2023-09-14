@@ -13,14 +13,15 @@ import com.bumptech.glide.Glide
 
 
 class DetailFood : Fragment() {
-    private var food: Food? = null
     private lateinit var binding: FragmentDetailFoodBinding
     private var quantity = 1
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        food = arguments?.getParcelable(ARG_FOOD)
 
+    private val  food: Food? by lazy{
+//        DetailFoodArgs.fromBundle(arguments as Bundle).food
+
+        arguments?.getParcelable(ARG_FOOD)
     }
+
 
 
     override fun onCreateView(
@@ -83,7 +84,7 @@ class DetailFood : Fragment() {
     }
 
     companion object {
-        private const val ARG_FOOD = "food"
+        const val ARG_FOOD = "food"
     }
 
 }

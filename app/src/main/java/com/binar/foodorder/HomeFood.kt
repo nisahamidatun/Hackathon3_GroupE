@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.binar.foodorder.adapter.FoodAdapter
@@ -64,8 +65,12 @@ class HomeFood : Fragment() {
 
         adapter.setOnItemClickListener(object : FoodAdapter.OnItemClickListener {
             override fun onItemClick(food: Food) {
-                val action: NavDirections = HomeFoodDirections.actionHomeFoodToDetailFood(food)
-                view.findNavController().navigate(action)
+//                val action: NavDirections = HomeFoodDirections.actionHomeFoodToDetailFood(food)
+//                view.findNavController().navigate(action)
+
+                findNavController().navigate(R.id.action_homeFood_to_detailFood,Bundle().apply {
+                    putParcelable(DetailFood.ARG_FOOD,food)
+                })
             }
 
         })

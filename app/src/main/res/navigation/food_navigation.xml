@@ -16,12 +16,14 @@
         android:id="@+id/detailFood"
         android:name="com.binar.foodorder.DetailFood"
         android:label="DetailFood" >
-        <argument
-            android:name="food"
-            app:argType="com.binar.foodorder.data.Food" />
         <action
             android:id="@+id/action_detailFood_to_homeFood"
             app:destination="@id/homeFood" />
+        <argument
+            android:name="food"
+            app:argType="com.binar.foodorder.data.Food"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 
 </navigation>
