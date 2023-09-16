@@ -18,6 +18,7 @@ class GridViewHolder(private val binding: ItemFoodBinding):RecyclerView.ViewHold
         name.text = food.name
         price.text = formattedPrice
         image.load(food.Image)
+
     }
 
 
