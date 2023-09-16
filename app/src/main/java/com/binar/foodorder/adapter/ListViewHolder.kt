@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 /**
  * Created by Rahmat Hidayat on 10/09/2023.
  */
-class ListViewHolder(private val fullWidthBinding: ItemFoodFullWidthBinding) :
+class ListViewHolder(private val fullWidthBinding: ItemFoodFullWidthBinding,private val onItemClick: (Food) -> Unit) :
     RecyclerView.ViewHolder(fullWidthBinding.root) {
     private val name = fullWidthBinding.tvFoodname
     private val price = fullWidthBinding.tvFoodprice
@@ -20,6 +20,7 @@ class ListViewHolder(private val fullWidthBinding: ItemFoodFullWidthBinding) :
         name.text = food.name
         price.text = formattedPrice
         image.load(food.Image)
+        fullWidthBinding.root.setOnClickListener { onItemClick.invoke(food) }
     }
 
 }
