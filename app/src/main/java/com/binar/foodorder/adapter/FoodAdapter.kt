@@ -31,12 +31,6 @@ class FoodAdapter(private val onItemClick: (Food) -> Unit, private var isGridvie
         this.isGridview = isGridview
         notifyItemRangeChanged(0,data.size)
     }
-//    fun updateData(newFoods: List<Food>, isGridview: Boolean) {
-//        val diffResult = DiffUtil.calculateDiff(FoodDiffUtil(foods, newFoods))
-//        foods = newFoods
-//        this.isGridview = isGridview
-//        diffResult.dispatchUpdatesTo(this)
-//    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
