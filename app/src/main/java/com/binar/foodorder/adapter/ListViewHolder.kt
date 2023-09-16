@@ -2,14 +2,13 @@ package com.binar.foodorder.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.binar.foodorder.model.Food
 import com.binar.foodorder.databinding.ItemFoodFullWidthBinding
-import com.bumptech.glide.Glide
+import com.binar.foodorder.model.Food
 
 /**
  * Created by Rahmat Hidayat on 10/09/2023.
  */
-class ListViewHolder(private val fullWidthBinding: ItemFoodFullWidthBinding) :
+class ListViewHolder(private val fullWidthBinding: ItemFoodFullWidthBinding,private val onItemClick: (Food) -> Unit) :
     RecyclerView.ViewHolder(fullWidthBinding.root) {
     private val name = fullWidthBinding.tvFoodname
     private val price = fullWidthBinding.tvFoodprice
@@ -20,6 +19,7 @@ class ListViewHolder(private val fullWidthBinding: ItemFoodFullWidthBinding) :
         name.text = food.name
         price.text = formattedPrice
         image.load(food.Image)
+        fullWidthBinding.root.setOnClickListener { onItemClick.invoke(food) }
     }
 
 }
