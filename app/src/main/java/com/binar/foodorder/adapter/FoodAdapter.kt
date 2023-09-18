@@ -19,7 +19,7 @@ class FoodAdapter(private val onItemClick: (Food) -> Unit, private var isGridvie
 
     private val differ =  AsyncListDiffer(this,object : DiffUtil.ItemCallback<Food>(){
         override fun areItemsTheSame(oldItem: Food, newItem: Food): Boolean {
-            return oldItem.name == newItem.Image
+            return oldItem.name == newItem.name
         }
 
         override fun areContentsTheSame(oldItem: Food, newItem: Food): Boolean {
