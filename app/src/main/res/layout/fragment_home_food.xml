@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/home_food"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_food"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/title_item"
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -39,20 +38,20 @@
             style="@style/ShapeAppearance.Material3.SmallComponent"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:contentDescription="@string/cart"
             android:src="@drawable/cart"
             app:layout_constraintEnd_toStartOf="@id/icon_account"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/cart"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/icon_account"
             style="@style/ShapeAppearance.Material3.SmallComponent"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:contentDescription="@string/account"
             android:src="@drawable/account"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/account"/>
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -67,12 +66,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:contentDescription="@string/diskonimage"
             android:src="@drawable/banners"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/diskonimage"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -86,12 +84,12 @@
         <ImageView
             android:id="@+id/iv_nasi"
             style="@style/image_style"
+            android:contentDescription="@string/nasi"
             android:src="@drawable/nasi"
             app:layout_constraintEnd_toStartOf="@+id/iv_mie"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/nasi"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_nasi"
@@ -106,12 +104,12 @@
         <ImageView
             android:id="@+id/iv_mie"
             style="@style/image_style"
+            android:contentDescription="@string/mie"
             android:src="@drawable/mie"
             app:layout_constraintEnd_toStartOf="@+id/iv_snack"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/iv_nasi"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/mie"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_mie"
@@ -147,12 +145,12 @@
         <ImageView
             android:id="@+id/iv_minuman"
             style="@style/image_style"
+            android:contentDescription="@string/minuman"
             android:src="@drawable/minuman"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/iv_snack"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/minuman"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_minuman"
@@ -170,8 +168,8 @@
         android:id="@+id/list_menu_makanan"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/category"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/category"
 
         >
 
@@ -191,21 +189,18 @@
             style="@style/ShapeAppearance.Material3.MediumComponent"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/icon_grid"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="@string/listicon"
-            />
+            android:src="@drawable/baseline_list_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleviewFood"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_list_menu_makanan"
-            app:spanCount="2"
-            tools:listitem="@layout/item_food" />
+            tools:listitem="@layout/item_food_listview" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

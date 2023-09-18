@@ -1,5 +1,4 @@
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardView"
     android:layout_width="match_parent"
@@ -18,26 +17,26 @@
             android:id="@+id/tv_foodimage"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:src="@drawable/ic_launcher_foreground"
+            android:contentDescription="@string/image_food"
             android:scaleType="centerCrop"
-            android:contentDescription="@string/image_food" />
+            android:src="@drawable/ic_launcher_foreground" />
 
         <TextView
             android:id="@+id/tv_foodname"
+            style="@style/TextAppearance.Material3.BodySmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="@string/food_name"
-            android:textStyle="bold"
-            style="@style/TextAppearance.Material3.BodySmall"
-            android:layout_marginTop="8dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_foodprice"
+            style="@style/TextAppearance.Material3.BodySmall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/currency_format"
-            style="@style/TextAppearance.Material3.BodySmall"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="4dp"
+            android:text="@string/currency_format" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

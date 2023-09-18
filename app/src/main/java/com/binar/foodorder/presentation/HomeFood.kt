@@ -24,13 +24,13 @@ class HomeFood : Fragment() {
     private lateinit var binding: FragmentHomeFoodBinding
     private lateinit var foodViewModel: FoodViewModel
 
-    private var isGridview = true
+    private var isLinearview = true
     private val adapter: FoodAdapter by lazy {
         FoodAdapter(
             onItemClick = { food ->
                 navigateToDetailFood(food)
             },
-            isGridview = true
+            isLinearview
         )
     }
 
@@ -46,6 +46,7 @@ class HomeFood : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecycleview()
+        setUpListToggle()
     }
     private fun setUpRecycleview(){
         val foodDataSource = FoodLocalDataSource()
@@ -55,21 +56,8 @@ class HomeFood : Fragment() {
         val recyclerView = binding.recycleviewFood
         val gridLayoutManager = GridLayoutManager(requireContext(), 2)
         val linearLayoutManager = LinearLayoutManager(requireContext())
-        recyclerView.layoutManager = gridLayoutManager
+        recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapter
-        val iconList = binding.iconList
-        iconList.setOnClickListener {
-            isGridview = !isGridview
-            if (isGridview) {
-                recyclerView.layoutManager = gridLayoutManager
-                iconList.setImageResource(R.drawable.icon_grid)
-            } else {
-                recyclerView.layoutManager = linearLayoutManager
-                iconList.setImageResource(R.drawable.baseline_list_24)
-            }
-            adapter.setData(foodViewModel.foods.value ?: emptyList(), isGridview)
-        }
-
         foodViewModel.foods.observe(viewLifecycleOwner) { foods ->
             adapter.setData(foods, true)
         }
@@ -78,6 +66,26 @@ class HomeFood : Fragment() {
     private fun navigateToDetailFood(food: Food? = null) {
         val action = HomeFoodDirections.actionHomeFoodToDetailFood(food)
         findNavController().navigate(action)
+    }
+    private fun setUpListToggle() {
+        val iconList = binding.iconList
+        iconList.setOnClickListener {
+            isLinearview = !isLinearview
+            toggleRecyclerViewLayout()
+        }
+    }
+    private fun toggleRecyclerViewLayout() {
+        val recyclerView = binding.recycleviewFood
+        val iconList = binding.iconList
+        if (isLinearview) {
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            iconList.setImageResource(R.drawable.baseline_list_24)
+        } else {
+            recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+            iconList.setImageResource(R.drawable.icon_grid)
+        }
+        adapter.setData(foodViewModel.foods.value ?: emptyList(), isLinearview)
+        adapter.refreshList()
     }
 
 }
