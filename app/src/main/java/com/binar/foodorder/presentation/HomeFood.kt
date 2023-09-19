@@ -1,7 +1,6 @@
 package com.binar.foodorder.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,8 +23,6 @@ class HomeFood : Fragment() {
 
     private lateinit var binding: FragmentHomeFoodBinding
     private lateinit var foodViewModel: FoodViewModel
-    private var navigationTriggerCount = 0
-    private var lastNavigationTimestamp: Long = 0
 
     private var isLinearview = true
     private val adapter: FoodAdapter by lazy {
@@ -68,25 +65,8 @@ class HomeFood : Fragment() {
     }
 
     private fun navigateToDetailFood(food: Food? = null) {
-        val currentTimestamp = System.currentTimeMillis()
-
-
-        // Cek apakah sudah cukup waktu sejak navigasi terakhir
-        if (currentTimestamp - lastNavigationTimestamp >= 1000) { // Misalnya, menunggu 1 detik
-            lastNavigationTimestamp = currentTimestamp
-
             val action = HomeFoodDirections.actionHomeFoodToDetailFood(food)
             findNavController().navigate(action)
-            navigationTriggerCount++
-            Log.d("NavigationTrigger", "Triggered navigation to DetailFood ($navigationTriggerCount times)")
-        } else {
-            // Double-click terdeteksi, dapatkan tindakan yang sesuai
-            Log.d("NavigationTrigger", "Double-click terdeteksi, tindakan tidak diambil")
-        }
-//        val action = HomeFoodDirections.actionHomeFoodToDetailFood(food)
-//        findNavController().navigate(action)
-//        navigationTriggerCount++
-//        Log.d("NavigationTrigger", "Triggered navigation to DetailFood ($navigationTriggerCount times)")
     }
     private fun setUpListToggle() {
         val iconList = binding.iconList
