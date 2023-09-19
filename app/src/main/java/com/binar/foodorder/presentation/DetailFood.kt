@@ -9,9 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import coil.load
-import com.binar.foodorder.model.Food
 import com.binar.foodorder.databinding.FragmentDetailFoodBinding
-import com.bumptech.glide.Glide
+import com.binar.foodorder.model.Food
 
 
 class DetailFood : Fragment() {
@@ -50,8 +49,9 @@ class DetailFood : Fragment() {
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             startActivity(mapIntent)
         }
+
         binding.icBack.setOnClickListener {
-            findNavController().navigate(DetailFoodDirections.actionDetailFoodToHomeFood())
+            findNavController().popBackStack()
         }
         binding.tvDecrement.setOnClickListener {
             if (quantity > 1) {
@@ -64,6 +64,7 @@ class DetailFood : Fragment() {
             updateCartButton()
         }
         updateCartButton()
+
     }
 
     private fun updateCartButton() {
