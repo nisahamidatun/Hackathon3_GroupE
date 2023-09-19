@@ -47,6 +47,7 @@ class HomeFood : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpRecycleview()
         setUpListToggle()
+
     }
     private fun setUpRecycleview(){
         val foodDataSource = FoodLocalDataSource()

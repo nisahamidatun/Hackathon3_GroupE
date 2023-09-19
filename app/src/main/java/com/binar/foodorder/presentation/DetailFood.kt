@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import coil.load
 import com.binar.foodorder.model.Food
 import com.binar.foodorder.databinding.FragmentDetailFoodBinding
@@ -50,7 +51,7 @@ class DetailFood : Fragment() {
             startActivity(mapIntent)
         }
         binding.icBack.setOnClickListener {
-            requireActivity().onBackPressed()
+            findNavController().navigate(DetailFoodDirections.actionDetailFoodToHomeFood())
         }
         binding.tvDecrement.setOnClickListener {
             if (quantity > 1) {
