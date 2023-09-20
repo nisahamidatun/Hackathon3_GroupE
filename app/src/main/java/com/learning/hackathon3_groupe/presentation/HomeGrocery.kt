@@ -51,6 +51,5 @@ class HomeGrocery : Fragment() {
         val categoriesRepository = CategoryRepository(categoriestDataSource)
         val viewModelFactory = CategoriesViewModelFactory(categoriesRepository)
         categoriesViewModel = ViewModelProvider(this,viewModelFactory).get(categoriesViewModel::class.java)
-
     }
 }
