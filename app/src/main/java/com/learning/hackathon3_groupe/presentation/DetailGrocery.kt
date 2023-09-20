@@ -34,27 +34,20 @@ class DetailGrocery : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setClickListener()
         showGroceryData()
     }
 
 
-    private fun showPlanetData() {
+    private fun showGroceryData() {
         grocery?.let { p ->
             binding.apply {
-                ivFruit.load(p.productImageUrl){
+                ivFruit.load(p.productImageUrl) {
                     crossfade(true)
                 }
                 tvTitleDetail.text = p.name
                 tvSeller.text = p.supplierName
                 tvDescFruit.text = p.desc
             }
-        }
-    }
-
-    private fun setClickListener() {
-        binding.btnBackToHome.setOnClickListener {
-            navigateToGoogleSearch()
         }
     }
 }
