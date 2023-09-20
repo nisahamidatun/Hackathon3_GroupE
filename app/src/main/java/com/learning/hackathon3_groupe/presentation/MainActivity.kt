@@ -1,7 +1,8 @@
-package com.learning.hackathon3_groupe
+package com.learning.hackathon3_groupe.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.learning.hackathon3_groupe.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
