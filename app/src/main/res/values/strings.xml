@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Hackathon3_GroupE</string>
+    <string name="address_title">Delivered To</string>
+    <string name="address_value">Jalan Depok Timur</string>
+    <string name="banner_title">Stay home\nWe deliver</string>
+    <string name="banner_subtitle">Any where... Any time!!</string>
+    <string name="profile_desc">for profile</string>
+    <string name="iconLocation_desc">for address</string>
 </resources>
