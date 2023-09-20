@@ -20,7 +20,7 @@ class DetailGrocery : Fragment() {
     private lateinit var binding: FragmentDetailGroceryBinding
 
     private val grocery : Product? by lazy {
-        GroceryDetailFragmentArgs.fromBundle(arguments as Bundle).grocery
+        DetailGroceryArgs.fromBundle(arguments as Bundle).product
     }
 
     override fun onCreateView(
