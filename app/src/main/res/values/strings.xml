@@ -10,4 +10,5 @@
     <string name="image_products">image_product</string>
     <string name="idr_18_000">IDR 18.000</string>
     <string name="rate_product">rate_product</string>
+    <string name="cart_icon">cart_icon</string>
 </resources>

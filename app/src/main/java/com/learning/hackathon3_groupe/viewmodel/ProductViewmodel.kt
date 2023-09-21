@@ -11,7 +11,7 @@ import com.learning.hackathon3_groupe.repository.ProductRepository
  */
 class ProductViewmodel(private val productRepository: ProductRepository):ViewModel() {
     private val _product  = MutableLiveData<List<Product>>()
-    val prouct : LiveData<List<Product>> get() = _product
+    val product : LiveData<List<Product>> get() = _product
     init {
         _product.value = productRepository.getProduct()
     }
