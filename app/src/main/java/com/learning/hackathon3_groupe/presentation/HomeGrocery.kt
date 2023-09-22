@@ -52,6 +52,7 @@ class HomeGrocery : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecycleviewProduct()
+
     }
 
     private fun setUpRecycleviewProduct() {
@@ -77,4 +78,7 @@ class HomeGrocery : Fragment() {
         categoriesViewModel =
             ViewModelProvider(this, viewModelFactory).get(categoriesViewModel::class.java)
     }
+
+
+
 }
