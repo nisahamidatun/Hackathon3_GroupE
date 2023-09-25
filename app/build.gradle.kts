@@ -59,4 +59,5 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation ("io.github.shashank02051997:FancyToast:2.0.2")
     implementation("io.coil-kt:coil:2.4.0")
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
 }

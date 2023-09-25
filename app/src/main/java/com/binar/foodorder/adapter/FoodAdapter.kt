@@ -12,7 +12,7 @@ import com.binar.foodorder.model.Food
 /**
  * Created by Rahmat Hidayat on 27/08/2023.
  */
-class FoodAdapter(private val onItemClick: (Food) -> Unit, private var isLinearview: Boolean) :
+class FoodAdapter(private val onItemClick: (Food) -> Unit, private var isGridView: Boolean) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val VIEW_TYPE_GRID = 0
     private val VIEW_TYPE_LIST = 1
@@ -29,9 +29,9 @@ class FoodAdapter(private val onItemClick: (Food) -> Unit, private var isLinearv
         }
     })
 
-    fun setData(data: List<Food>, isLinearview: Boolean) {
+    fun setData(data: List<Food>, isGridView: Boolean) {
         differ.submitList(data)
-        this.isLinearview = isLinearview
+        this.isGridView = isGridView
     }
 
     fun refreshList() {
@@ -69,7 +69,7 @@ class FoodAdapter(private val onItemClick: (Food) -> Unit, private var isLinearv
 
     override fun getItemCount(): Int = differ.currentList.size
     override fun getItemViewType(position: Int): Int {
-        return if (isLinearview) VIEW_TYPE_LIST else VIEW_TYPE_GRID
+        return if (isGridView) VIEW_TYPE_LIST else VIEW_TYPE_GRID
     }
 
 }
