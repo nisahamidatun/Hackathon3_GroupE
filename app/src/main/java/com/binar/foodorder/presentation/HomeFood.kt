@@ -9,7 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.binar.foodorder.CounterDataStoreManager
+import com.binar.foodorder.MainViewModel
 import com.binar.foodorder.R
+import com.binar.foodorder.ViewModelFactory
 import com.binar.foodorder.adapter.FoodAdapter
 import com.binar.foodorder.databinding.FragmentHomeFoodBinding
 import com.binar.foodorder.model.Food
@@ -18,21 +21,23 @@ import com.binar.foodorder.repository.FoodRepository
 import com.binar.foodorder.viewmodel.FoodViewModel
 import com.binar.foodorder.viewmodel.FoodViewModelFactory
 
-
 class HomeFood : Fragment() {
 
     private lateinit var binding: FragmentHomeFoodBinding
     private lateinit var foodViewModel: FoodViewModel
-
-    private var isLinearview = true
+    private lateinit var counterDataStoreManager: CounterDataStoreManager
+    private var isGridView = false
     private val adapter: FoodAdapter by lazy {
         FoodAdapter(
             onItemClick = { food ->
                 navigateToDetailFood(food)
             },
-            isLinearview
+            isGridView
         )
     }
+    private lateinit var viewModel: MainViewModel
+    private lateinit var pref: CounterDataStoreManager
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,9 +52,26 @@ class HomeFood : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpRecycleview()
         setUpListToggle()
-        isLinearview = true
+        isGridView = true
+        counterDataStoreManager = CounterDataStoreManager(requireContext())
+
+        pref = CounterDataStoreManager(requireContext())
+        viewModel = ViewModelProvider(this, ViewModelFactory(pref))[MainViewModel::class.java]
+
+        // Observasi perubahan isLinearView
+        viewModel.getIsLinearView().observe(viewLifecycleOwner) { isGridViews ->
+            isGridView = isGridViews
+            toggleRecyclerViewLayout()
+        }
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            counterDataStoreManager.getIsLinearView().collect { isLinearView: Boolean ->
+//                isLinearview = isLinearView
+//                toggleRecyclerViewLayout()
+//            }
+//        }
     }
-    private fun setUpRecycleview(){
+
+    private fun setUpRecycleview() {
         val foodDataSource = FoodLocalDataSource()
         val foodRepository = FoodRepository(foodDataSource)
         val viewModelFactory = FoodViewModelFactory(foodRepository)
@@ -60,26 +82,33 @@ class HomeFood : Fragment() {
         recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = adapter
         foodViewModel.foods.observe(viewLifecycleOwner) { foods ->
-            adapter.setData(foods, true)
+            adapter.setData(foods, false)
         }
     }
 
     private fun navigateToDetailFood(food: Food? = null) {
-            val action = HomeFoodDirections.actionHomeFoodToDetailFood(food)
-            findNavController().navigate(action)
+        val action = HomeFoodDirections.actionHomeFoodToDetailFood(food)
+        findNavController().navigate(action)
     }
+
     private fun setUpListToggle() {
         val iconList = binding.iconList
+//        pref = CounterDataStoreManager(requireContext())
+//        viewModel = ViewModelProvider(this, ViewModelFactory(pref))[MainViewModel::class.java]
         iconList.setOnClickListener {
-            isLinearview = !isLinearview
+            isGridView = !isGridView
             toggleRecyclerViewLayout()
+            // Untuk menyimpan status isLinearView
+
+            viewModel.setIsLinearView(isGridView)
         }
     }
+
     private fun toggleRecyclerViewLayout() {
         val recyclerView = binding.recycleviewFood
         val iconList = binding.iconList
 
-        if (isLinearview) {
+        if (isGridView) {
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             iconList.setImageResource(R.drawable.baseline_list_24)
         } else {
@@ -87,7 +116,7 @@ class HomeFood : Fragment() {
             iconList.setImageResource(R.drawable.icon_grid)
         }
 
-        adapter.setData(foodViewModel.foods.value ?: emptyList(), isLinearview)
+        adapter.setData(foodViewModel.foods.value ?: emptyList(), isGridView)
         adapter.refreshList()
     }
 
