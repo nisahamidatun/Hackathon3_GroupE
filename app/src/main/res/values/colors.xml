@@ -3,6 +3,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
     <color name="colorCustomToastBackground">#2196F3</color>
+    <color name="home">#2196F3</color>
+    <color name="cart">#2196F3</color>
+    <color name="profile">#2196F3</color>
     <color name="my_light_primary">#C4C4C4</color>
     <color name="my_dark_primary">#C4C4C4</color>
     <color name="my_dark_accent">#00000000</color>

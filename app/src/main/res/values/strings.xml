@@ -27,5 +27,8 @@
     <string name="decrement">-</string>
     <string name="tv_increment">+</string>
     <string name="tv_quantity">1</string>
+    <string name="title_cart">Cart</string>
+    <string name="titlefavorites">Favorites</string>
+    <string name="titile_home">Home</string>
 
 </resources>

@@ -5,15 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.binar.foodorder.viewmodel.DatastoreViewModel
 import com.binar.foodorder.databinding.ItemFoodGridviewBinding
 import com.binar.foodorder.databinding.ItemFoodListviewBinding
 import com.binar.foodorder.model.Food
-
-/**
- * Created by Rahmat Hidayat on 27/08/2023.
- */
-class FoodAdapter(private val onItemClick: (Food) -> Unit, private var isGridView: Boolean) :
+//nilai viewModel: MainViewModel
+class FoodAdapter(private val onItemClick: (Food) -> Unit, private val viewModel: DatastoreViewModel) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
     private val VIEW_TYPE_GRID = 0
     private val VIEW_TYPE_LIST = 1
 
@@ -29,13 +28,8 @@ class FoodAdapter(private val onItemClick: (Food) -> Unit, private var isGridVie
         }
     })
 
-    fun setData(data: List<Food>, isGridView: Boolean) {
+    fun setData(data: List<Food>) {
         differ.submitList(data)
-        this.isGridView = isGridView
-    }
-
-    fun refreshList() {
-        notifyItemRangeChanged(0, differ.currentList.size)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -68,8 +62,8 @@ class FoodAdapter(private val onItemClick: (Food) -> Unit, private var isGridVie
     }
 
     override fun getItemCount(): Int = differ.currentList.size
-    override fun getItemViewType(position: Int): Int {
-        return if (isGridView) VIEW_TYPE_LIST else VIEW_TYPE_GRID
-    }
 
+    override fun getItemViewType(position: Int): Int {
+        return if (viewModel.getIsLinearView().value == true) VIEW_TYPE_LIST else VIEW_TYPE_GRID
+    }
 }
