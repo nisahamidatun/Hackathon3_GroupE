@@ -14,7 +14,7 @@
     <item
         android:id="@+id/favorites"
         android:icon="@drawable/account"
-        android:title="@string/titlefavorites"
+        android:title="@string/title_profile"
         />
 
 </menu>
