@@ -28,18 +28,20 @@ class ProfilFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+       showItemProfile()
+
+    }
+
+    private fun showItemProfile() {
         binding.ivProfil.load("https://avatars.githubusercontent.com/u/87407102?v=4") {
             transformations(RoundedCornersTransformation(25f))
         }
 
-        val initialName = R.string.name
-        val initialEmail = R.string.email
-        val initialPhone = R.string.no_phone
-
-        binding.editTextName.setText(initialName)
-        binding.editTextEmail.setText(initialEmail)
-        binding.editTextPhone.setText(initialPhone)
-
+        binding.editTextName.setText(R.string.name)
+        binding.editTextEmail.setText(R.string.email)
+        binding.editTextPhone.setText(R.string.no_phone)
     }
+
+
 }
 

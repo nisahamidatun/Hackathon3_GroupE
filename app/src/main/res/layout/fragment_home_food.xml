@@ -32,26 +32,6 @@
             android:text="@string/mau_makan_apa_hari_ini"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title" />
-
-        <ImageView
-            android:id="@+id/icon_cart"
-            style="@style/ShapeAppearance.Material3.SmallComponent"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:contentDescription="@string/cart"
-            android:src="@drawable/cart"
-            app:layout_constraintEnd_toStartOf="@id/icon_account"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/icon_account"
-            style="@style/ShapeAppearance.Material3.SmallComponent"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:contentDescription="@string/account"
-            android:src="@drawable/account"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
