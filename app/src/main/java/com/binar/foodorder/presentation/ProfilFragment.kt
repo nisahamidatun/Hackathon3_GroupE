@@ -1,3 +1,4 @@
+
 package com.binar.foodorder.presentation
 
 import android.os.Bundle
@@ -11,9 +12,14 @@ import com.binar.foodorder.R
 import com.binar.foodorder.databinding.FragmentProfilBinding
 
 
+
+
+
+
 class ProfilFragment : Fragment() {
-    private lateinit var binding: FragmentProfilBinding
-    private var isEditing = false
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -23,6 +29,7 @@ class ProfilFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         binding = FragmentProfilBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -42,5 +49,11 @@ class ProfilFragment : Fragment() {
         binding.editTextPhone.setText(initialPhone)
 
     }
+}
+
+        return inflater.inflate(R.layout.fragment_profil, container, false)
+    }
+
+
 }
 

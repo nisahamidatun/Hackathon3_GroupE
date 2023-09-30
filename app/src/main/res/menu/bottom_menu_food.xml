@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/homeFood"
+        android:id="@+id/home"
         android:icon="@drawable/ic_home"
         android:title="@string/titile_home"
         />
@@ -13,6 +13,7 @@
         />
     <item
         android:id="@+id/profilFragment"
+        android:id="@+id/favorites"
         android:icon="@drawable/account"
         android:title="@string/title_profile"
         />
