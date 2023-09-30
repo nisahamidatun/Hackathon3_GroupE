@@ -38,5 +38,6 @@
     <string name="title_profil">Profil</string>
     <string name="title_email">Email</string>
     <string name="title_phone_number">Phone Number</string>
+    <string name="title_name">Name</string>
 
 </resources>
