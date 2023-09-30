@@ -13,7 +13,6 @@ import com.binar.foodorder.databinding.FragmentProfilBinding
 
 class ProfilFragment : Fragment() {
     private lateinit var binding: FragmentProfilBinding
-    private var isEditing = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
