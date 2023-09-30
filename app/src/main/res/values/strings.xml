@@ -17,7 +17,12 @@
     <string name="account">account</string>
     <string name="diskonimage">diskonimage</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Page cart</string>
+    <string name="name">Rahmat Hidayat</string>
+    <string name="email">hrahmat950@gmail.com</string>
+    <string name="no_phone">1234567890</string>
+    <string name="url_profil">https://avatars.githubusercontent.com/u/87407102?v=4</string>
+
     <string name="name_food">Name Food</string>
     <string name="textlokasi">Lokasi</string>
     <string name="deskripsi_lokasi">Jl. BSD Green Office Park Jl.BSD Grand Boulevard,Sampora, BSD,Kabupaten Tangerang,Banten 15345</string>
@@ -30,5 +35,6 @@
     <string name="title_cart">Cart</string>
     <string name="title_profile">Profile</string>
     <string name="titile_home">Home</string>
+    <string name="titlepage_profile">Profile</string>
 
 </resources>

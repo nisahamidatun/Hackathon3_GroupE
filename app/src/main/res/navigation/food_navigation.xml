@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/food_navigation"
     app:startDestination="@id/homeFood">
 
@@ -11,6 +12,9 @@
         <action
             android:id="@+id/action_homeFood_to_detailFood"
             app:destination="@id/detailFood" />
+        <action
+            android:id="@+id/action_homeFood_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFood"
@@ -24,6 +28,24 @@
             app:argType="com.binar.foodorder.model.Food"
             app:nullable="true"
             android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.binar.foodorder.presentation.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_homeFood"
+            app:destination="@id/homeFood" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilFragment"
+        android:name="com.binar.foodorder.presentation.ProfilFragment"
+        android:label="fragment_profil"
+        tools:layout="@layout/fragment_profil" >
+        <action
+            android:id="@+id/action_profilFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
 
 </navigation>
