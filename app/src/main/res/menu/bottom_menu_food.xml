@@ -7,11 +7,12 @@
         android:title="@string/titile_home"
         />
     <item
-        android:id="@+id/cart"
+        android:id="@+id/cartFragment"
         android:icon="@drawable/cart"
         android:title="@string/title_cart"
         />
     <item
+        android:id="@+id/profilFragment"
         android:id="@+id/favorites"
         android:icon="@drawable/account"
         android:title="@string/title_profile"

@@ -1,10 +1,19 @@
-package com.binar.foodorder
+
+package com.binar.foodorder.presentation
+
+
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
+import com.binar.foodorder.R
+
+
+class CartFragment : Fragment() {
+
 
 
 class CartFragment : Fragment() {
