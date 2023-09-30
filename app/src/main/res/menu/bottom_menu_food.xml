@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/home"
+        android:id="@+id/homeFood"
         android:icon="@drawable/ic_home"
         android:title="@string/titile_home"
         />
     <item
-        android:id="@+id/cart"
+        android:id="@+id/cartFragment"
         android:icon="@drawable/cart"
         android:title="@string/title_cart"
         />
     <item
-        android:id="@+id/favorites"
+        android:id="@+id/profilFragment"
         android:icon="@drawable/account"
         android:title="@string/title_profile"
         />
